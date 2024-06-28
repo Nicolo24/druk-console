@@ -29,4 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//route for dispensors crud
+Route::resource('dispensors', App\Http\Controllers\DispensorController::class);
+
 require __DIR__.'/auth.php';

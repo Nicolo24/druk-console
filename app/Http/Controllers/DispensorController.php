@@ -12,7 +12,9 @@ class DispensorController extends Controller
      */
     public function index()
     {
-        //
+        //return dispensor.index view with all dispensors
+        return view('Dispensor.index')->with('dispensors', Dispensor::all());
+
     }
 
     /**
@@ -60,6 +62,10 @@ class DispensorController extends Controller
      */
     public function destroy(Dispensor $dispensor)
     {
-        //
+        //delete dispensor
+        $dispensor->delete();
+        //redirect to dispensor.index
+        return redirect()->route('dispensors.index');
+        
     }
 }
