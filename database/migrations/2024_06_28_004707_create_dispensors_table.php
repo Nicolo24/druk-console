@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('dispensors', function (Blueprint $table) {
             $table->id();
             $table->string('serialNumber')->unique();
-            $table->string('productName');
-            $table->string('productDescription');
+            $table->string('productName') ->nullable();
+            $table->string('productDescription')->nullable();
             //productPrice
-            $table->decimal('productPrice', 8, 2);
+            $table->decimal('productPrice', 8, 2)->nullable();
             //store product photo in db with blob and file name
-            $table->string('productPhotoFilename');
-            $table->binary('productPhoto');
+            $table->string('productPhotoFilename')->nullable();
+            $table->binary('productPhoto')->nullable();
             $table->timestamps();
         });
     }
