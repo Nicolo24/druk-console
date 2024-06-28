@@ -46,7 +46,8 @@ class DispensorController extends Controller
      */
     public function edit(Dispensor $dispensor)
     {
-        //
+        //open edit form
+        return view('Dispensor.edit')->with('dispensor', $dispensor);
     }
 
     /**
@@ -54,7 +55,10 @@ class DispensorController extends Controller
      */
     public function update(Request $request, Dispensor $dispensor)
     {
-        //
+        //update dispensor
+        $dispensor->update($request->all());
+        //redirect to dispensor.index
+        return redirect()->route('dispensors.index');
     }
 
     /**
