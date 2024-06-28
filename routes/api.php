@@ -20,5 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //ruta para ping desde ApiPairController
-Route::get('/ping', 'ApiPairController@ping');
-
+Route::get('/ping', [ApiPairController::class, 'ping']);
