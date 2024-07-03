@@ -68,4 +68,21 @@ class ApiSessionController extends Controller
             "session"=> $session
         ]);
     }
+
+    //save log
+    public function saveLog(Request $request)
+    {
+        $serialNumber = $request->input('serialNumber'); 
+        $dispensor = Dispensor::where('serialNumber', $serialNumber)->firstOrFail();
+        $session = $dispensor->sessions()->where('status', 'in-course')->firstOrFail();
+        $sessionLog = $session->sessionLogs()->create([
+            'action' => $request->input('action'),
+            'description' => $request->input('description'),
+            'status' => $request->input('status'),
+            'remarks' => $request->input('remarks')
+        ]);
+        return response()->json([
+            "sessionLog"=> $sessionLog
+        ]);
+    }
 }

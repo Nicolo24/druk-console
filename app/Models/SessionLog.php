@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class SessionLog extends Model
 {
+
+    // protected $fillable = [
+    //     'session_id',
+    //     'action',
+    //     'description',
+    //     'status',
+    //     'remarks'
+    // ];
     use HasFactory;
 
     protected $fillable = [

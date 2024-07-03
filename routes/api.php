@@ -34,3 +34,7 @@ Route::post('/startSession', [ApiSessionController::class, 'startSession']);
 
 //ruta para stopSession desde ApiSessionController
 Route::post('/stopSession', [ApiSessionController::class, 'stopSession']);
+
+//ruta para saveLog desde ApiSessionController
+Route::post('/saveLog', [ApiSessionController::class, 'saveLog']);
+
