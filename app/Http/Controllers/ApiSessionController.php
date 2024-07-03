@@ -59,11 +59,19 @@ class ApiSessionController extends Controller
             ]);
         }
 
+        //create transaction
         $session = $dispensor->sessions()->where('status', 'in-course')->firstOrFail();
+        $amount = -1*$qtyDispensed*$dispensor->productPrice;
+        $transaction = $session->transactions()->create([
+            'user_id' => $session->user_id,
+            'amount' => $amount,
+            'balance' => $session->user->balance - $amount
+        ]);
         $session->update([
             'status' => 'completed',
             'qty_dispensed' => $qtyDispensed
         ]);
+
         return response()->json([
             "session"=> $session
         ]);

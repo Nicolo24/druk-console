@@ -42,4 +42,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function getBalanceAttribute()
+    {
+        // get last transaction
+        $lastTransaction = $this->transactions()->latest()->first();
+        return $lastTransaction ? $lastTransaction->balance : 0;
+    }
+
 }
