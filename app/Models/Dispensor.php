@@ -17,4 +17,16 @@ class Dispensor extends Model
         'productPhotoFilename',
         'productPhoto'
     ];
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
+
+    // attribute can_dispense = if any session is in course
+    public function getCanDispenseAttribute()
+    {
+        return $this->sessions()->where('status', 'in-course')->exists();
+    }
+
 }

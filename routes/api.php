@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiPairController;
+use App\Http\Controllers\ApiSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,12 @@ Route::get('/ping', [ApiPairController::class, 'ping']);
 
 //ruta para pair desde ApiPairController
 Route::post('/pair', [ApiPairController::class, 'pair']);
+
+//ruta para getUpdates desde ApiSessionController
+Route::get('/getUpdates', [ApiSessionController::class, 'getUpdates']);
+
+//ruta para startSession desde ApiSessionController
+Route::post('/startSession', [ApiSessionController::class, 'startSession']);
+
+//ruta para stopSession desde ApiSessionController
+Route::post('/stopSession', [ApiSessionController::class, 'stopSession']);
